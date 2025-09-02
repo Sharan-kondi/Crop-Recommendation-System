@@ -45,16 +45,16 @@ It is highly recommended to use a virtual environment to avoid conflicts.
 
 Bash
 
-# Create a virtual environment
+Create a virtual environment
 python -m venv venv
 
-# Activate the virtual environment
-# On macOS/Linux
+Activate the virtual environment
+#On macOS/Linux
 source venv/bin/activate
-# On Windows
+#On Windows
 .\venv\Scripts\activate
 
-# Install the required Python packages
+#Install the required Python packages
 pip install flask Flask-MySQLdb pandas numpy geopy scikit-learn requests joblib werkzeug
 2. Run the Application ▶️
 Once you have the dependencies installed and have set up your MySQL database with the credentials specified in app.py, you can launch the Flask application.
