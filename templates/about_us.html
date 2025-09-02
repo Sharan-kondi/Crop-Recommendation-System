@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AGRICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f9f7; /* Light earthy background */
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #4CAF50; /* Rich green navbar */
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f1f1f1 !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4CAF50 40%, #2a9d8f 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+
+        h2, h4 {
+            color: #2d6a4f; /* Dark green */
+            font-weight: 600;
+        }
+
+        p, li {
+            color: #6c757d; /* Subtle gray */
+            line-height: 1.6;
+        }
+
+        .info-card {
+            background-color: #e9f5e7; /* Soft green background */
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-card h4 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #2a9d8f; /* Teal-blue */
+            border-color: #2a9d8f;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #21867a;
+            border-color: #21867a;
+        }
+
+        .footer {
+            background-color: #264653; /* Deep blue-green footer */
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-icons img {
+            width: 25px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #e9c46a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AGRICORE Logo">
+                <strong>AGRICORE</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-light ms-auto" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>About AGRICORE</h1>
+        <p>Empowering farmers with data-driven insights for better crop management and sustainable farming.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2 class="text-center mb-4">Our Motivation</h2>
+
+        <div class="info-card">
+            <h4>Our Mission</h4>
+            <p>
+                Agriculture is the backbone of our country, and we strongly believe in empowering farmers with technology to make better, data-driven decisions. This platform was created to provide easy access to crucial information like weather forecasts, crop recommendations, and location-specific insights. By leveraging advanced APIs and data analytics, we aim to bridge the gap between technology and farming, ensuring sustainability and improved productivity.
+            </p>
+        </div>
+
+        <div class="info-card mt-4">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><strong>Rakesh V Shetty</strong><br>
+                    Phone: <a href="tel:+917676033109">7676033109</a><br>
+                    Email: <a href="mailto:rakeshvshetty.ai22@rvce.edu.in">rakeshvshetty.ai22@rvce.edu.in</a>
+                </li>
+                <li><strong>Sharankrishna Kondi</strong><br>
+                    Phone: <a href="tel:+918197410923">8197410923</a><br>
+                    Email: <a href="mailto:sharankrishnak.ai22@rvce.edu.in">sharankrishnak.ai22@rvce.edu.in</a>
+                </li>
+                <li><strong>Niranjan M Sindhur</strong><br>
+                    Phone: <a href="tel:+918310311107">8310311107</a><br>
+                    Email: <a href="mailto:niranjanms.ai22@rvce.edu.in">niranjanms.ai22@rvce.edu.in</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>© 2025 AGRICORE. All Rights Reserved.</span>
+        <br>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        <div class="social-icons mt-2">
+            <a href="#"><img src="{{ url_for('static', filename='images/facebook.png') }}" alt="Facebook"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/twitter.png') }}" alt="Twitter"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/instagram.png') }}" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - AGRICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f9f7; /* Light earthy background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #4CAF50; /* Rich green navbar */
+        }
+
+        .navbar-brand img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f1f1f1 !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4CAF50 40%, #2a9d8f 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff; /* White background for content */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #2d6a4f; /* Dark green for heading */
+            font-size: 2.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-label {
+            color: #6a994e; /* Medium green for labels */
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            background-color: #2a9d8f; /* Teal-blue for buttons */
+            border-color: #2a9d8f;
+            padding: 12px 30px;
+        }
+
+        .btn-primary:hover {
+            background-color: #21867a;
+            border-color: #21867a;
+        }
+
+        .btn-secondary {
+            background-color: #6a994e; /* Medium green for secondary buttons */
+            border-color: #6a994e;
+            padding: 12px 30px;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #567e3b;
+            border-color: #567e3b;
+        }
+
+        .info-card {
+            background-color: #e9f5e7; /* Soft green background for the info section */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #264653; /* Deep blue-green footer */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #e9c46a;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AGRICORE Logo">
+                <strong>AGRICORE</strong>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Edit Profile</h1>
+        <p>Update your personal information and manage your account settings.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Edit Profile</h2>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-dismissible fade show {% if messages[0][0] == 'success' %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                <strong>{% if messages[0][0] == 'success' %}Success!{% else %}Error!{% endif %}</strong>
+                {{ messages[0][1] }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Edit Profile Form -->
+        <form method="POST" action="/edit_profile">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ user[1] }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ user[2] }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ user[3] }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value="Male" {% if user[4] == 'Male' %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if user[4] == 'Female' %}selected{% endif %}>Female</option>
+                    <option value="Other" {% if user[4] == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user[5] }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="current_password" class="form-label">Current Password</label>
+                <input type="password" class="form-control" id="current_password" name="current_password" required>
+            </div>
+            <div class="mb-3">
+                <label for="new_password" class="form-label">New Password (Leave blank to keep current password)</label>
+                <input type="password" class="form-control" id="new_password" name="new_password">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <!-- Dynamically redirect to the appropriate dashboard based on the user's role -->
+            {% if role == 'admin' %}
+                <a href="/admin_dashboard" class="btn btn-secondary btn-lg">Go to Dashboard</a>
+            {% else %}
+                <a href="/farmer_dashboard" class="btn btn-secondary btn-lg">Go to Dashboard</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>© 2025 AGRICORE. All Rights Reserved.</span>
+        <br>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

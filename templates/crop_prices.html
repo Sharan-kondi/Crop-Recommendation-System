@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prices - AGRICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f9f7; /* Light earthy background */
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #4CAF50; /* Rich green navbar */
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+            margin: 0 10px; /* Add spacing between nav items */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f1f1f1 !important;
+        }
+
+        .dropdown-menu {
+            background-color: #4CAF50; /* Match navbar color */
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 10px; /* Add spacing between dropdown and nav items */
+        }
+
+        .dropdown-item {
+            color: #ffffff !important;
+            font-weight: 500;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #2a9d8f; /* Teal-blue for hover */
+            color: white !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4CAF50 40%, #2a9d8f 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #2d6a4f; /* Dark green for heading */
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            color: #2d6a4f; /* Dark green for subheading */
+            font-size: 2rem;
+            margin-top: 30px;
+        }
+
+        .form-label {
+            color: #6a994e; /* Medium green for labels */
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-primary {
+            background-color: #2a9d8f; /* Teal-blue for buttons */
+            border-color: #2a9d8f;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #21867a;
+            border-color: #21867a;
+        }
+
+        .btn-secondary {
+            background-color: #6a994e; /* Medium green for secondary buttons */
+            border-color: #6a994e;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #567e3b;
+            border-color: #567e3b;
+        }
+
+        table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2a9d8f; /* Teal-blue for table headers */
+            color: black;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e9f5e7; /* Soft green for hover */
+            transition: background-color 0.3s ease;
+        }
+
+        .alert {
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+
+        .alert-dismissible .btn-close {
+            padding: 12px;
+        }
+
+        .alert-warning {
+            background-color: #ffecb3;
+            border-color: #ffe082;
+            color: #d32f2f;
+        }
+
+        .footer {
+            background-color: #264653; /* Deep blue-green footer */
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #e9c46a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AGRICORE Logo">
+                <strong>AGRICORE</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Features Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Features
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/crop_info">Get Crop Information</a></li>
+                            <li><a class="dropdown-item" href="/crop_prices">View Crop Prices</a></li>
+                            <li><a class="dropdown-item" href="/location_info">Get Location Information</a></li>
+                            <li><a class="dropdown-item" href="/crop_recommendation">Get Crop Recommendation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Crop Prices</h1>
+        <p>Check the latest prices for your crops to make informed decisions.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Find Crop Prices</h2>
+
+        <!-- Crop Price Search Form -->
+        <form action="{{ url_for('crop_prices') }}" method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="crop_name" class="form-label">Select Crop:</label>
+                <input type="text" id="crop_name" name="crop_name" class="form-control" placeholder="Enter crop name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if crop_name %}
+            {% if prices %}
+                <h3>Prices for {{ crop_name }}:</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Quantity (grams)</th>
+                            <th>Price (rupees)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for price in prices %}
+                        <tr>
+                            <td>{{ price[2] }}</td>  <!-- Timestamp -->
+                            <td>{{ price[3] }}</td>  <!-- Quantity -->
+                            <td>{{ price[4] }}</td>  <!-- Price -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-warning mt-4" role="alert">
+                    No prices found for this crop.
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="mt-4 text-center">
+            <a href="/farmer_dashboard" class="btn btn-secondary btn-lg">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>© 2025 AGRICORE. All Rights Reserved.</span>
+        <br>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

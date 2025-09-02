@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGRIGENIE : Crop Recommendation System</title>
+    <style>
+        /* Your existing CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .form-section, .info-section {
+            width: 48%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .quote {
+            font-style: italic;
+            color: #666;
+            margin: 20px 0;
+        }
+        .info-section {
+            text-align: center;
+        }
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AGRIGENIE : Crop Recommendation System</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="form-section">
+                <h2>Enter Your Address</h2>
+                <form action="/predict" method="post">
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="info-section">
+                <img src="{{ url_for('static', filename='last.jpg') }}" alt="Crop Prediction" class="hero-image">
+                <div class="quote">"The future of agriculture lies in data-driven decisions."</div>
+                <div class="quote">"Smart farming is key to sustainable agriculture."</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Crop Prediction System. All rights reserved.
+    </div>
+
+    <!-- Botpress Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/ec49a5e7-eb3f-4a29-a01a-7b4b865d0873/webchat/v2.1/config.js"></script>
+
+</body>
+</html>

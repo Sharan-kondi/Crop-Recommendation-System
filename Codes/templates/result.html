@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        /* Your existing CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+            color: #333;
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .main-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .result-content {
+            margin-bottom: 20px;
+        }
+        .result-content h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .result-content p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .crop-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .crop-item {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            text-align: center;
+            width: 30%;
+        }
+        .crop-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prediction Results in Order</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="result-content">
+                <h2>Results for Your Address</h2>
+                <p><strong>Address:</strong> {{ address }}</p>
+                <p><strong>District:</strong> {{ district }}</p>
+                <p><strong>pH:</strong> {{ ph }}</p>
+                <p><strong>Nitrogen (N):</strong> {{ nitrogen }}</p>
+                <p><strong>Phosphorus (P):</strong> {{ phosphorus }}</p>
+                <p><strong>Potassium (K):</strong> {{ potassium }}</p>
+                <p><strong>Rainfall:</strong> {{ rainfall }} mm</p>
+                <p><strong>Temperature:</strong> {{ temperature }}°C</p>
+                <p><strong>Feels Like:</strong> {{ feels_like }}°C</p>
+                <p><strong>Humidity:</strong> {{ humidity }}%</p>
+                <p><strong>Wind Speed:</strong> {{ wind_speed }} m/s</p>
+                <p><strong>Weather Description:</strong> {{ description }}</p>
+                <p><strong>Sunrise:</strong> {{ sunrise }}</p>
+                <p><strong>Sunset:</strong> {{ sunset }}</p>
+                <h2>Top 3 Predicted Crops:</h2>
+                <div class="crop-container">
+                    {% for crop, image in top_3_crops.items() %}
+                    <div class="crop-item">
+                        <h3>{{ crop }}</h3>
+                        <p>{{ crop_description[crop] }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Crop Prediction System. All rights reserved.
+    </div>
+
+    <!-- Botpress Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/ec49a5e7-eb3f-4a29-a01a-7b4b865d0873/webchat/v2.1/config.js"></script>
+
+</body>
+</html>
