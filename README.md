@@ -1,9 +1,7 @@
-
-AgriCore: An AI-Powered Crop and Weather Recommendation System 🌾
-Project Overview
+# Project Overview
 AgriCore is a comprehensive, full-stack web application designed to empower farmers with data-driven insights for improved agricultural productivity. The system uses a machine learning model to recommend the most suitable crops based on a farmer's location, soil type, and real-time weather conditions. Additionally, it provides a secure user management system for both farmers and administrators, offering features such as market price updates, crop information, and profile management. This project serves as a practical demonstration of how AI and web technologies can be integrated to create valuable solutions in the agriculture sector.
 
-🚀 Features
+# 🚀 Features
 AI-Powered Crop Recommendation: The core feature is a RandomForestClassifier model that predicts the top three most suitable crops by analyzing environmental factors like Nitrogen (N), Phosphorus (P), Potassium (K), temperature, humidity, pH, and rainfall.
 
 Real-time Weather & Location Data: The application fetches and displays up-to-date weather data from the OpenWeatherMap API. It uses geopy and a KNeighborsClassifier to determine the user's district based on their address.
@@ -16,7 +14,7 @@ Market Price Updates: The admin panel provides functionality to add and update m
 
 Model Persistence: The trained machine learning model is saved using joblib to ensure fast and efficient deployment within the web application.
 
-🛠️ Technologies Used
+# 🛠️ Technologies Used
 Backend Framework: Flask (Python)
 
 Machine Learning: scikit-learn, RandomForestClassifier, KNeighborsClassifier, joblib
@@ -29,7 +27,7 @@ Database: MySQL, Flask-MySQLdb
 
 Frontend: HTML, CSS, Bootstrap
 
-⚙️ Setup and Installation
+# ⚙️ Setup and Installation
 Follow these steps to get the AgriCore application up and running on your local machine.
 
 Prerequisites
@@ -74,4 +72,3 @@ Farmer Dashboard: From the farmer's dashboard, you can view crop recommendations
 Admin Dashboard: As an admin, you have the ability to manage users (view farmer accounts) and update crop information and market prices.
 
 Crop Recommendation: Navigate to the "Crop Recommendation" page, input your location, and the system will provide a list of the top three crops suitable for your area based on soil and weather conditions.
-
